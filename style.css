@@ -80,7 +80,8 @@ img { max-width: 100%; display: block; }
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
   padding: 120px 0 80px;
-  background: linear-gradient(160deg, var(--blue-light) 0%, var(--pink-light) 40%, var(--yellow-light) 70%, var(--green-light) 100%);
+  background: linear-gradient(160deg, rgba(74,144,217,.85) 0%, rgba(242,160,192,.8) 40%, rgba(247,208,96,.8) 70%, rgba(123,198,126,.8) 100%),
+              url('assets/img/Hero.jpg') center/cover no-repeat;
   overflow: hidden;
 }
 .hero-bg-shapes { position: absolute; inset: 0; pointer-events: none; }
