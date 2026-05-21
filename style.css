@@ -83,9 +83,10 @@ img { max-width: 100%; display: block; }
 
 /* ===== BANNER SORTEIO ===== */
 .banner-sorteio {
-  position: fixed; top: 112px; left: 0; right: 0; z-index: 998;
+  position: fixed; top: 116px; left: 0; right: 0; z-index: 998;
   background: linear-gradient(90deg, #4A90D9, #7BC67E);
   padding: 10px 0; text-align: center;
+  border-top: 2px solid rgba(255,255,255,.5);
 }
 .banner-sorteio p { font-size: .88rem; color: var(--white); margin: 0; }
 .banner-sorteio .banner-tag { background: var(--yellow); color: var(--gray-900); }
