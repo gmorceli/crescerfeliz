@@ -27,7 +27,7 @@
   --transition: .3s ease;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
 body {
   font-family: 'Nunito', sans-serif;
@@ -58,6 +58,29 @@ img { max-width: 100%; display: block; }
 .btn-rede { background: var(--blue); color: var(--white); padding: 10px 24px; font-size: .85rem; }
 .btn-rede:hover { background: var(--blue-dark); }
 
+/* ===== BANNER PILOTO ===== */
+.banner-piloto {
+  position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+  background: linear-gradient(90deg, #F7D060, #F2A0C0);
+  padding: 10px 0; text-align: center;
+}
+.banner-content {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.banner-tag {
+  background: var(--red); color: var(--white); padding: 2px 10px;
+  border-radius: 50px; font-size: .72rem; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.banner-piloto p { font-size: .88rem; color: var(--gray-900); margin: 0; }
+.btn-banner {
+  background: var(--blue); color: var(--white); padding: 8px 20px;
+  border-radius: 50px; font-size: .82rem; font-weight: 700;
+  transition: var(--transition); border: none; cursor: pointer;
+}
+.btn-banner:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -79,7 +102,7 @@ img { max-width: 100%; display: block; }
 /* ===== HERO ===== */
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 0 80px;
+  padding: 160px 0 80px;
   background: linear-gradient(160deg, var(--blue-light) 0%, var(--pink-light) 40%, var(--yellow-light) 70%, var(--green-light) 100%);
   overflow: hidden;
 }
@@ -299,6 +322,12 @@ section { padding: 80px 0; }
 /* ===== RESPONSIVE — Tablet portrait (768px) ===== */
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
+
+  /* Banner */
+  .banner-piloto { top: 72px; padding: 8px 0; }
+  .banner-content { gap: 8px; }
+  .banner-piloto p { font-size: .8rem; }
+  .btn-banner { padding: 6px 16px; font-size: .78rem; }
 
   /* Nav */
   .nav-toggle { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
