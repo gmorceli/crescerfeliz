@@ -27,7 +27,7 @@
   --transition: .3s ease;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
 body {
   font-family: 'Nunito', sans-serif;
@@ -112,7 +112,7 @@ img { max-width: 100%; display: block; }
 /* ===== HERO ===== */
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 0 80px;
+  padding: 160px 0 80px;
   background: linear-gradient(160deg, var(--blue-light) 0%, var(--pink-light) 40%, var(--yellow-light) 70%, var(--green-light) 100%);
   overflow: hidden;
 }
