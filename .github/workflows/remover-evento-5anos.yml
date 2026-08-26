@@ -1,0 +1,62 @@
+name: Remover destaque do 5º Encontro
+
+# Roda na manhã seguinte ao evento (18/10, ~9h17 de Brasília = 12h17 UTC)
+# e remove o banner e a seção do 5º Encontro da branch site.
+# Também pode ser executado manualmente na aba Actions (workflow_dispatch).
+on:
+  schedule:
+    - cron: '17 12 18 10 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  remover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout da branch site
+        uses: actions/checkout@v4
+        with:
+          ref: site
+
+      - name: Remover banner e seção do evento
+        run: |
+          python3 - <<'EOF'
+          import pathlib
+          import re
+
+          html_path = pathlib.Path('index.html')
+          html = html_path.read_text(encoding='utf-8')
+          novo = re.sub(
+              r'[ \t]*<!-- BANNER EVENTO 5 ANOS -->.*?<!-- /BANNER EVENTO 5 ANOS -->\n*',
+              '', html, flags=re.S)
+          novo = re.sub(
+              r'[ \t]*<!-- EVENTO 5 ANOS -->.*?<!-- /EVENTO 5 ANOS -->\n*',
+              '', novo, flags=re.S)
+          if novo != html:
+              html_path.write_text(novo, encoding='utf-8')
+              print('index.html: blocos do evento removidos')
+          else:
+              print('index.html: marcadores nao encontrados (nada a fazer)')
+
+          css_path = pathlib.Path('style.css')
+          css = css_path.read_text(encoding='utf-8')
+          novo_css = css.replace('scroll-padding-top: 120px', 'scroll-padding-top: 80px')
+          novo_css = novo_css.replace('padding: 160px 0 80px', 'padding: 120px 0 80px')
+          if novo_css != css:
+              css_path.write_text(novo_css, encoding='utf-8')
+              print('style.css: espacamentos restaurados')
+          EOF
+
+      - name: Commit e push
+        run: |
+          if git diff --quiet; then
+            echo "Nada a remover — site já está sem o destaque do evento."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html style.css
+          git commit -m "Remover destaque do 5º Encontro (pós-evento, remoção agendada)"
+          git push origin site
